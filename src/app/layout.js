@@ -18,12 +18,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // 특정 path 이면 변수에 true 담기
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <footer>나는야 푸터</footer>
       </body>
     </html>
   );

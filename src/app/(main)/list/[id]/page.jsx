@@ -1,17 +1,19 @@
-"use client";
-
-import { useParams, useSearchParams } from "next/navigation";
-
-export default function DetailPage() {
+export default async function DetailPage({ params }) {
+  console.log("Detailpage 실행!!!!");
   //   const { id } = await params;
-  const { id } = useParams();
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query");
+  try {
+    await fetch("https://jsonplaceholder.typicode.com1/users").then((res) =>
+      res.json(),
+    );
+  } catch (error) {
+    alert(error.message);
+  }
+  const { id } = await params;
+
   return (
     <>
       <div>DetailPage</div>
       <p>id: {id}</p>
-      <p>query: {query}</p>
     </>
   );
 }

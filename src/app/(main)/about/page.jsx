@@ -1,16 +1,18 @@
 "use client";
 
+import { useTheme } from "../../../providers/ThemeProvider";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function AboutPage() {
+  const { isDarkMode, toggleTheme } = useTheme();
+  console.log("isDarkMode:", isDarkMode);
   const router = useRouter();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
-    alert("뭔가처리");
-    router.push("/");
+    toggleTheme();
   };
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function AboutPage() {
   return (
     <>
       <div>AboutPage</div>
-      <button onClick={handleClick}>홈으로 이동</button>
+      <button onClick={handleClick}>다크모드 토클링</button>
       <ul>
         {data?.map((user) => (
           <li key={user.id}>{user.name} </li>

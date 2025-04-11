@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { cookies } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  console.log("Home 실행!!!");
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <header className="mb-8 text-center">
@@ -187,3 +190,6 @@ export default function Home() {
     </div>
   );
 }
+
+// export const dynamic = "force-dynamic";
+// export const revalidate = 5; // 5초 간격의 ISR
